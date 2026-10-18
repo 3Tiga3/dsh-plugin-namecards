@@ -1,0 +1,56 @@
+{
+  "name": "dsh-plugin-namecards",
+  "version": "0.3.4",
+  "description": "插件名片：给插件换图标、中文名和说明，按文件夹/收藏整理，支持拖拽排序、列表/铺陈视图与启停开关；只改显示，不动插件本身。",
+  "icon": "icon.svg",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./icon": "./icon.svg",
+    "./locale/en.json": "./locale/en.json",
+    "./locale/zh.json": "./locale/zh.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "files": [
+    "lib",
+    "assets",
+    "seed",
+    "locale",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3Tiga3/dsh-plugin-namecards.git"
+  },
+  "homepage": "https://github.com/3Tiga3/dsh-plugin-namecards#readme",
+  "bugs": {
+    "url": "https://github.com/3Tiga3/dsh-plugin-namecards/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "plugin-manager",
+    "name-cards",
+    "icons",
+    "chinese"
+  ],
+  "engines": {
+    "dsh": ">=0.2.0-rc.1"
+  }
+}

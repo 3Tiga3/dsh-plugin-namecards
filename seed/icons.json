@@ -1,0 +1,200 @@
+[
+  {
+    "id": "memory",
+    "zh": "记忆",
+    "file": "assets/icons/memory.svg",
+    "color": "#6D5BD0"
+  },
+  {
+    "id": "market",
+    "zh": "商店",
+    "file": "assets/icons/market.svg",
+    "color": "#E08A3C"
+  },
+  {
+    "id": "skill",
+    "zh": "技能",
+    "file": "assets/icons/skill.svg",
+    "color": "#4C8DFF"
+  },
+  {
+    "id": "pet",
+    "zh": "宠物",
+    "file": "assets/icons/pet.svg",
+    "color": "#E08A3C"
+  },
+  {
+    "id": "theme",
+    "zh": "主题",
+    "file": "assets/icons/theme.svg",
+    "color": "#E0609A"
+  },
+  {
+    "id": "tool",
+    "zh": "工具",
+    "file": "assets/icons/tool.svg",
+    "color": "#4C8DFF"
+  },
+  {
+    "id": "network",
+    "zh": "网络",
+    "file": "assets/icons/network.svg",
+    "color": "#2FA86A"
+  },
+  {
+    "id": "image",
+    "zh": "识图",
+    "file": "assets/icons/image.svg",
+    "color": "#5B7A99"
+  },
+  {
+    "id": "audio",
+    "zh": "音乐",
+    "file": "assets/icons/audio.svg",
+    "color": "#E08A3C"
+  },
+  {
+    "id": "voice",
+    "zh": "语音",
+    "file": "assets/icons/voice.svg",
+    "color": "#2BB8A8"
+  },
+  {
+    "id": "security",
+    "zh": "安全",
+    "file": "assets/icons/security.svg",
+    "color": "#C25450"
+  },
+  {
+    "id": "mobile",
+    "zh": "手机",
+    "file": "assets/icons/mobile.svg",
+    "color": "#2BB8A8"
+  },
+  {
+    "id": "terminal",
+    "zh": "终端",
+    "file": "assets/icons/terminal.svg",
+    "color": "#4C8DFF"
+  },
+  {
+    "id": "doc",
+    "zh": "文档",
+    "file": "assets/icons/doc.svg",
+    "color": "#5B7A99"
+  },
+  {
+    "id": "graph",
+    "zh": "架构",
+    "file": "assets/icons/graph.svg",
+    "color": "#5B7A99"
+  },
+  {
+    "id": "robot",
+    "zh": "机器人",
+    "file": "assets/icons/robot.svg",
+    "color": "#2BB8A8"
+  },
+  {
+    "id": "database",
+    "zh": "数据库",
+    "file": "assets/icons/database.svg",
+    "color": "#5B7A99"
+  },
+  {
+    "id": "cloud",
+    "zh": "云",
+    "file": "assets/icons/cloud.svg",
+    "color": "#2FA86A"
+  },
+  {
+    "id": "code",
+    "zh": "代码",
+    "file": "assets/icons/code.svg",
+    "color": "#4C8DFF"
+  },
+  {
+    "id": "chat",
+    "zh": "聊天",
+    "file": "assets/icons/chat.svg",
+    "color": "#2FA86A"
+  },
+  {
+    "id": "game",
+    "zh": "游戏",
+    "file": "assets/icons/game.svg",
+    "color": "#E08A3C"
+  },
+  {
+    "id": "wallpaper",
+    "zh": "壁纸",
+    "file": "assets/icons/wallpaper.svg",
+    "color": "#E0609A"
+  },
+  {
+    "id": "startup",
+    "zh": "启动",
+    "file": "assets/icons/startup.svg",
+    "color": "#2BB8A8"
+  },
+  {
+    "id": "mcp",
+    "zh": "连接",
+    "file": "assets/icons/mcp.svg",
+    "color": "#2FA86A"
+  },
+  {
+    "id": "search",
+    "zh": "搜索",
+    "file": "assets/icons/search.svg",
+    "color": "#4C8DFF"
+  },
+  {
+    "id": "settings",
+    "zh": "设置",
+    "file": "assets/icons/settings.svg",
+    "color": "#2BB8A8"
+  },
+  {
+    "id": "update",
+    "zh": "更新",
+    "file": "assets/icons/update.svg",
+    "color": "#2BB8A8"
+  },
+  {
+    "id": "folder",
+    "zh": "文件夹",
+    "file": "assets/icons/folder.svg",
+    "color": "#5B7A99"
+  },
+  {
+    "id": "clock",
+    "zh": "时钟",
+    "file": "assets/icons/clock.svg",
+    "color": "#2BB8A8"
+  },
+  {
+    "id": "mood",
+    "zh": "表情",
+    "file": "assets/icons/mood.svg",
+    "color": "#E08A3C"
+  },
+  {
+    "id": "weather",
+    "zh": "天气",
+    "file": "assets/icons/weather.svg",
+    "color": "#E08A3C"
+  },
+  {
+    "id": "perf",
+    "zh": "性能",
+    "file": "assets/icons/perf.svg",
+    "color": "#2BB8A8"
+  },
+  {
+    "id": "lab",
+    "zh": "实验",
+    "file": "assets/icons/lab.svg",
+    "color": "#4C8DFF"
+  }
+]

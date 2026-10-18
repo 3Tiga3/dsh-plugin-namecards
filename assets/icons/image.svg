@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="识图">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#5B7A99"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 24c4-6 9-9 14-9s10 3 14 9c-4 6-9 9-14 9s-10-3-14-9z"/>
+    <circle cx="24" cy="24" r="4.5"/>
+  </g>
+</svg>

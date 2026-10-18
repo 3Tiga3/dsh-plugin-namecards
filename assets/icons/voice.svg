@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="语音">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#2BB8A8"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="20" y="11" width="8" height="16" rx="4"/>
+    <path d="M16.5 23.5a7.5 7.5 0 0 0 15 0"/>
+    <path d="M24 31v5"/>
+    <path d="M19.5 36h9"/>
+  </g>
+</svg>

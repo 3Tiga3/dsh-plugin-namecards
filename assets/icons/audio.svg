@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="音乐">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#E08A3C"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="18.5" cy="32.5" r="3.5" fill="#FFFFFF" stroke="none"/>
+    <circle cx="31.5" cy="30.5" r="3.5" fill="#FFFFFF" stroke="none"/>
+    <path d="M22 32.5V16l13-2v16.5"/>
+    <path d="M22 23.5l13-2"/>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="网络">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#2FA86A"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22.3 17.1 15.7 28.9"/>
+    <path d="M25.7 17.1 32.3 28.9"/>
+    <path d="M17.5 32h13"/>
+    <circle cx="24" cy="14" r="3.5"/>
+    <circle cx="14" cy="32" r="3.5"/>
+    <circle cx="34" cy="32" r="3.5"/>
+  </g>
+</svg>

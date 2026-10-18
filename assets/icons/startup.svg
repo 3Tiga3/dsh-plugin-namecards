@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="启动">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#2BB8A8"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 11.5V23"/>
+    <path d="M31.07 16.93A10 10 0 1 1 16.93 16.93"/>
+  </g>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="设置">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#2BB8A8"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M34.99 21.86L34.99 26.14L30.47 28.36L33.29 30.26L30.26 33.29L25.49 31.66L26.14 34.99L21.86 34.99L19.64 30.47L17.74 33.29L14.71 30.26L16.34 25.49L13.01 26.14L13.01 21.86L17.53 19.64L14.71 17.74L17.74 14.71L22.51 16.34L21.86 13.01L26.14 13.01L28.36 17.53L30.26 14.71L33.29 17.74L31.66 22.51Z"/>
+    <circle cx="24" cy="24" r="4.2"/>
+  </g>
+</svg>

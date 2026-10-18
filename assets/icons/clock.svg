@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="时钟">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#2BB8A8"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="24" cy="24" r="10"/>
+    <path d="M24 24V17"/>
+    <path d="M24 24h6.5"/>
+  </g>
+</svg>

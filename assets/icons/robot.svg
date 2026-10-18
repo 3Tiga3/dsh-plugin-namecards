@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="机器人">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#2BB8A8"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="14" y="18" width="20" height="16" rx="4"/>
+    <path d="M24 18v-4"/>
+    <circle cx="24" cy="12.6" r="1.6" fill="#FFFFFF" stroke="none"/>
+    <circle cx="19.5" cy="25" r="1.6" fill="#FFFFFF" stroke="none"/>
+    <circle cx="28.5" cy="25" r="1.6" fill="#FFFFFF" stroke="none"/>
+    <path d="M20 30h8"/>
+    <path d="M14 24h-2.5"/>
+    <path d="M34 24h2.5"/>
+  </g>
+</svg>

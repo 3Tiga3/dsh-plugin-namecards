@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="架构">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#5B7A99"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="19" y="11" width="10" height="8" rx="2"/>
+    <rect x="12" y="29" width="10" height="8" rx="2"/>
+    <rect x="26" y="29" width="10" height="8" rx="2"/>
+    <path d="M24 19v5"/>
+    <path d="M17 29v-5h14v5"/>
+  </g>
+</svg>

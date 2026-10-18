@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="天气">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#E08A3C"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="30" cy="16.5" r="5"/>
+    <path d="M16 33.5h12.5a4.8 4.8 0 0 0 .7-9.4a7 7 0 0 0-13.3-1.2A5 5 0 0 0 16 33.5z"/>
+  </g>
+</svg>

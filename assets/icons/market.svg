@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="商店">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#E08A3C"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M13 20 15 13h18l2 7"/>
+    <path d="M13 20a2.75 2.75 0 0 0 5.5 0a2.75 2.75 0 0 0 5.5 0a2.75 2.75 0 0 0 5.5 0a2.75 2.75 0 0 0 5.5 0"/>
+    <path d="M14 21v12h20V21"/>
+    <path d="M21 33v-8h6v8"/>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="云">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#2FA86A"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 31h15a5 5 0 0 0 .8-9.9a7.5 7.5 0 0 0-14.3-1.2A5.5 5.5 0 0 0 16 31z"/>
+  </g>
+</svg>

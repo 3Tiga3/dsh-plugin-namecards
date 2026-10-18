@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="工具">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#4C8DFF"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M25.55 12.55A7 7 0 1 0 35.45 12.55"/>
+    <path d="M28.1 24.1 13.5 36.5"/>
+  </g>
+</svg>

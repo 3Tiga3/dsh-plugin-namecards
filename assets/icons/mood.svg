@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="表情">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#E08A3C"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="24" cy="24" r="10"/>
+    <circle cx="19.5" cy="21" r="1.5" fill="#FFFFFF" stroke="none"/>
+    <circle cx="28.5" cy="21" r="1.5" fill="#FFFFFF" stroke="none"/>
+    <path d="M18.5 27a7 7 0 0 0 11 0"/>
+  </g>
+</svg>

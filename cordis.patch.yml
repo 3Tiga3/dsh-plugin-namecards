@@ -1,0 +1,8 @@
+# dsh-plugin-namecards 的 bundle patch：把「插件名片」挂进 DSH 配置树。
+#
+# insert 的 id 与包名一致，方便按行寻址；name 解析到本包入口 lib/index.js。
+# package.json 同时声明了 dsh.client，DSH 会把本包当作浏览器插件，
+# 提供 /plugins/dsh-plugin-namecards/client.js 给页面。
+- insert:
+    - id: dsh-plugin-namecards
+      name: 'dsh-plugin-namecards'

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="数据库">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#5B7A99"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="24" cy="16" rx="10" ry="4"/>
+    <path d="M14 16v16"/>
+    <path d="M34 16v16"/>
+    <path d="M14 32a10 4 0 0 0 20 0"/>
+    <path d="M14 24a10 4 0 0 0 20 0"/>
+  </g>
+</svg>

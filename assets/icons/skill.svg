@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="技能">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#4C8DFF"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="12.5" y="12.5" width="10" height="10" rx="2.5"/>
+    <rect x="25.5" y="12.5" width="10" height="10" rx="2.5"/>
+    <rect x="12.5" y="25.5" width="10" height="10" rx="2.5"/>
+    <rect x="25.5" y="25.5" width="10" height="10" rx="2.5"/>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="实验">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#4C8DFF"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 12h12"/>
+    <path d="M21 12v8l-6.8 10.4A3.5 3.5 0 0 0 17.2 35.7h13.6a3.5 3.5 0 0 0 3-5.3L27 20v-8"/>
+    <path d="M17.2 27.2h13.6"/>
+  </g>
+</svg>

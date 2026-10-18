@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="终端">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#4C8DFF"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="11" y="12" width="26" height="24" rx="3.5"/>
+    <path d="M17 20l4 4-4 4"/>
+    <path d="M24.5 28h6"/>
+  </g>
+</svg>
