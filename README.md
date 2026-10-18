@@ -32,9 +32,7 @@ dsh plugin --profile web add github:3Tiga3/dsh-plugin-namecards
 
 插件页 → 添加插件 → 安装第三方插件 → 填本仓库的绝对路径。
 
-### 从 npm 安装（尚未发布）
-
-npm 包名已预留为 `dsh-plugin-namecards`，发布后可用：
+### 从 npm 安装
 
 ```sh
 dsh plugin --profile web add dsh-plugin-namecards

@@ -118,6 +118,7 @@ async function main() {
     assert.equal(data.bundles[0].original.description.en, 'English description')
     assert.equal(data.bundles[0].rows[0].entryId, 'entry-a')
     assert.match(data.cards['other-bundle'].icon, /^builtin:/, '没有名片的插件应自动分配到图标')
+    assert.equal(data.cards['demo-bundle'], undefined, '作者自带图标的插件不应被自动图标覆盖')
   })
 
   await test('布局：建文件夹 / 改名 / 移入 / 收藏 / 排序 / 删除', async (home) => {
@@ -133,17 +134,22 @@ async function main() {
     await h.call('POST', '/dsh-plugin-namecards/layout', { action: 'folder.sort', id: folderId, sort: 'auto' })
     await h.call('POST', '/dsh-plugin-namecards/layout', { action: 'view', mode: 'grid' })
 
+    const second = await h.call('POST', '/dsh-plugin-namecards/layout', { action: 'folder.create', name: '工具' })
+    const secondId = second.data.folder.id
+    await h.call('POST', '/dsh-plugin-namecards/layout', { action: 'folder.reorder', ids: [secondId, folderId] })
     let state = (await h.call('GET', '/dsh-plugin-namecards/state')).data
-    assert.equal(state.layout.folders.length, 1)
-    assert.equal(state.layout.folders[0].name, '记忆与知识')
-    assert.equal(state.layout.folders[0].sort, 'auto')
+    assert.equal(state.layout.folders.length, 2)
+    assert.equal(state.layout.folders[0].id, secondId, '文件夹顺序应按 reorder 生效')
+    assert.equal(state.layout.folders[1].id, folderId)
+    assert.equal(state.layout.folders[1].name, '记忆与知识')
+    assert.equal(state.layout.folders[1].sort, 'auto')
     assert.equal(state.layout.assignments['demo-bundle'], folderId)
     assert.deepEqual(state.layout.favorites.keys, ['demo-bundle'])
     assert.equal(state.layout.view, 'grid')
 
     await h.call('POST', '/dsh-plugin-namecards/layout', { action: 'folder.delete', id: folderId })
     state = (await h.call('GET', '/dsh-plugin-namecards/state')).data
-    assert.equal(state.layout.folders.length, 0)
+    assert.equal(state.layout.folders.length, 1)
     assert.equal(state.layout.assignments['demo-bundle'], undefined)
   })
 
@@ -161,6 +167,14 @@ async function main() {
     assert.equal(missing.status, 400)
   })
 
+  await test('autoIcon:false 可以阻止自动图标', async (home) => {
+    const h = makeHarness()
+    await h.call('POST', '/dsh-plugin-namecards/save', { key: 'other-bundle', card: { autoIcon: false } })
+    const state = (await h.call('GET', '/dsh-plugin-namecards/state')).data
+    assert.equal(state.cards['other-bundle'].autoIcon, false)
+    assert.equal(state.cards['other-bundle'].icon, undefined)
+  })
+
   await test('保存 / 重置 / 上传 / 导入', async (home) => {
     const h = makeHarness()
     const saved = await h.call('POST', '/dsh-plugin-namecards/save', { key: 'demo-bundle', card: { description: '保存后的说明', icon: 'builtin:tool' } })
@@ -173,7 +187,7 @@ async function main() {
     assert.ok(existsSync(join(home, 'dsh-plugin-namecards', 'icons', upload.data.token.slice(5))))
 
     const reset = await h.call('POST', '/dsh-plugin-namecards/reset', { key: 'demo-bundle' })
-    assert.equal(reset.data.cards['demo-bundle'], undefined)
+    assert.equal(reset.data.cards['demo-bundle'].autoIcon, false)
 
     const imported = await h.call('POST', '/dsh-plugin-namecards/import', { version: 2, enabled: false, cards: { x: { description: '导入' } }, layout: { folders: [{ id: 'f_abcd1234', name: '导入文件夹', sort: 'manual' }] } })
     assert.equal(imported.status, 200)
