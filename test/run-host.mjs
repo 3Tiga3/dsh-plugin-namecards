@@ -175,6 +175,41 @@ async function main() {
     assert.equal(state.cards['other-bundle'].icon, undefined)
   })
 
+  await test('首次加载：实验性插件自动收进「实验性插件」文件夹', async (home) => {
+    const list = baseList().concat([
+      { name: '@deepseek-ai/dsh-experimental-auto-review', meta: { description: { en: 'Experimental' } } },
+      { name: '@deepseek-ai/dsh-experimental-voice-input-bundle' },
+      { name: 'dsh-pet', meta: { description: { en: 'pet' } } }
+    ])
+    const h = makeHarness(list)
+    const first = (await h.call('GET', '/dsh-plugin-namecards/state')).data
+    assert.equal(first.layout.folders.length, 1)
+    assert.equal(first.layout.folders[0].name, '实验性插件')
+    assert.equal(first.layout.assignments['@deepseek-ai/dsh-experimental-auto-review'], 'f_experimental')
+    assert.equal(first.layout.assignments['@deepseek-ai/dsh-experimental-voice-input-bundle'], 'f_experimental')
+    assert.equal(first.layout.assignments['dsh-pet'], undefined)
+
+    await h.call('POST', '/dsh-plugin-namecards/layout', { action: 'folder.delete', id: 'f_experimental' })
+    const second = (await h.call('GET', '/dsh-plugin-namecards/state')).data
+    assert.equal(second.layout.folders.length, 0, '用户删除后不应自动重建')
+  })
+
+  await test('已有布局：只归拢未归类的实验性插件，不移动已分类的', async (home) => {
+    const list = baseList().concat([
+      { name: '@deepseek-ai/dsh-experimental-auto-review' },
+      { name: '@deepseek-ai/dsh-experimental-voice-input-bundle' }
+    ])
+    const h = makeHarness(list)
+    const created = await h.call('POST', '/dsh-plugin-namecards/layout', { action: 'folder.create', name: '我的' })
+    const folderId = created.data.folder.id
+    await h.call('POST', '/dsh-plugin-namecards/layout', { action: 'assign', key: '@deepseek-ai/dsh-experimental-auto-review', folderId })
+    const state = (await h.call('GET', '/dsh-plugin-namecards/state')).data
+    // 已归类的保持原样，未归类的进「实验性插件」
+    assert.equal(state.layout.folders.length, 2)
+    assert.equal(state.layout.assignments['@deepseek-ai/dsh-experimental-auto-review'], folderId)
+    assert.equal(state.layout.assignments['@deepseek-ai/dsh-experimental-voice-input-bundle'], 'f_experimental')
+  })
+
   await test('保存 / 重置 / 上传 / 导入', async (home) => {
     const h = makeHarness()
     const saved = await h.call('POST', '/dsh-plugin-namecards/save', { key: 'demo-bundle', card: { description: '保存后的说明', icon: 'builtin:tool' } })
