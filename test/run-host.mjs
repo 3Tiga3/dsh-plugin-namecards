@@ -177,9 +177,11 @@ async function main() {
 
   await test('首次加载：实验性插件自动收进「实验性插件」文件夹', async (home) => {
     const list = baseList().concat([
-      { name: '@deepseek-ai/dsh-experimental-auto-review', meta: { description: { en: 'Experimental' } } },
-      { name: '@deepseek-ai/dsh-experimental-voice-input-bundle' },
-      { name: 'dsh-pet', meta: { description: { en: 'pet' } } }
+      { name: '@deepseek-ai/dsh-experimental-auto-review', enabled: true, meta: { title: { zh: '自动授权审查' }, description: { en: 'Experimental' } } },
+      { name: '@deepseek-ai/dsh-experimental-voice-input-bundle', enabled: true },
+      { name: '@deepseek-ai/dsh-experimental-inspector-profile', enabled: false },
+      { name: '@deepseek-ai/dsh-experimental-ralph-bundle', enabled: false },
+      { name: 'dsh-pet', enabled: true, meta: { description: { en: 'pet' } } }
     ])
     const h = makeHarness(list)
     const first = (await h.call('GET', '/dsh-plugin-namecards/state')).data
@@ -187,17 +189,49 @@ async function main() {
     assert.equal(first.layout.folders[0].name, '实验性插件')
     assert.equal(first.layout.assignments['@deepseek-ai/dsh-experimental-auto-review'], 'f_experimental')
     assert.equal(first.layout.assignments['@deepseek-ai/dsh-experimental-voice-input-bundle'], 'f_experimental')
+    assert.equal(first.layout.assignments['@deepseek-ai/dsh-experimental-ralph-bundle'], 'f_experimental', '官方实验性插件与是否启用无关')
+    assert.equal(first.layout.assignments['@deepseek-ai/dsh-experimental-inspector-profile'], 'f_experimental', '固定的实验性插件即使未启用也应加入')
+    assert.equal(first.cards['@deepseek-ai/dsh-experimental-auto-review'].note, '自动授权审查', '应使用官方中文名作为备注')
     assert.equal(first.layout.assignments['dsh-pet'], undefined)
 
     await h.call('POST', '/dsh-plugin-namecards/layout', { action: 'folder.delete', id: 'f_experimental' })
     const second = (await h.call('GET', '/dsh-plugin-namecards/state')).data
-    assert.equal(second.layout.folders.length, 0, '用户删除后不应自动重建')
+    assert.equal(second.layout.folders.length, 1)
+    assert.equal(second.layout.folders[0].name, '实验性插件')
+    assert.equal(second.layout.assignments['@deepseek-ai/dsh-experimental-auto-review'], 'f_experimental')
+  })
+
+  await test('实验性文件夹清理：移出未启用 / 非官方名单的插件', async (home) => {
+    writeCards(home, {
+      version: 2, enabled: true, cards: {},
+      layout: {
+        version: 1,
+        folders: [{ id: 'f_experimental', name: '实验性插件', sort: 'manual', collapsed: false }],
+        assignments: {
+          '@deepseek-ai/dsh-experimental-voice-input-bundle': 'f_experimental',
+          '@deepseek-ai/dsh-experimental-ralph-bundle': 'f_experimental',
+          'dsh-pet': 'f_experimental'
+        },
+        favorites: { keys: [], sort: 'manual', collapsed: false },
+        manual: {}, view: 'list', seeded: true
+      }
+    })
+    const list = baseList().concat([
+      { name: '@deepseek-ai/dsh-experimental-voice-input-bundle', enabled: true },
+      { name: '@deepseek-ai/dsh-experimental-ralph-bundle', enabled: false }
+    ])
+    const h = makeHarness(list)
+    const state = (await h.call('GET', '/dsh-plugin-namecards/state')).data
+    assert.equal(state.layout.assignments['@deepseek-ai/dsh-experimental-voice-input-bundle'], 'f_experimental')
+    assert.equal(state.layout.assignments['@deepseek-ai/dsh-experimental-ralph-bundle'], 'f_experimental')
+    assert.equal(state.layout.assignments['dsh-pet'], undefined)
+    assert.equal(state.layout.folders.length, 1)
   })
 
   await test('已有布局：只归拢未归类的实验性插件，不移动已分类的', async (home) => {
     const list = baseList().concat([
-      { name: '@deepseek-ai/dsh-experimental-auto-review' },
-      { name: '@deepseek-ai/dsh-experimental-voice-input-bundle' }
+      { name: '@deepseek-ai/dsh-experimental-auto-review', enabled: true },
+      { name: '@deepseek-ai/dsh-experimental-voice-input-bundle', enabled: true }
     ])
     const h = makeHarness(list)
     const created = await h.call('POST', '/dsh-plugin-namecards/layout', { action: 'folder.create', name: '我的' })
@@ -208,6 +242,18 @@ async function main() {
     assert.equal(state.layout.folders.length, 2)
     assert.equal(state.layout.assignments['@deepseek-ai/dsh-experimental-auto-review'], folderId)
     assert.equal(state.layout.assignments['@deepseek-ai/dsh-experimental-voice-input-bundle'], 'f_experimental')
+  })
+
+  await test('预设：只给实验性插件写官方中文备注，其他插件只补图标', async (home) => {
+    const list = baseList().concat([
+      { name: '@deepseek-ai/dsh-experimental-auto-review', enabled: true, meta: { title: { zh: '自动授权审查' } } },
+      { name: 'demo-bundle', enabled: true, meta: { title: { zh: '演示插件' } } }
+    ])
+    const h = makeHarness(list)
+    const state = (await h.call('GET', '/dsh-plugin-namecards/state')).data
+    assert.equal(state.cards['@deepseek-ai/dsh-experimental-auto-review'].note, '自动授权审查')
+    assert.equal(state.cards['demo-bundle'].note, undefined, '非实验性插件不应自动写备注')
+    assert.match(state.cards['demo-bundle'].icon, /^builtin:/)
   })
 
   await test('保存 / 重置 / 上传 / 导入', async (home) => {
