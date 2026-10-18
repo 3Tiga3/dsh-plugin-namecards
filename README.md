@@ -1,4 +1,4 @@
-# 插件名片（dsh-plugin-namecards）v0.3.2
+# 插件名片（dsh-plugin-namecards）
 
 给 DSH「插件」页里的插件换**图标**、**中文名（备注）**和**中文说明**，并用文件夹、收藏、拖拽排序、列表/铺陈两种视图来管理。只改显示：不修改插件文件、不写 cordis 配置；唯一的写操作是你在界面里拨动的启用开关（转调官方插件管理器）。
 
@@ -18,22 +18,49 @@
 - 点插件行/图标 → 右侧「编辑名片」抽屉：图标、**中文说明**、**备注（显示名称）**、**所在文件夹**；点抽屉外空白或 Esc 关闭；
 - **自动图标**：装载后会为所有插件补一个合适的图标（按名称/说明匹配分类；不会覆盖你手动设过的）；未安装条目也一并补齐。
 
+## 安装
+
+### 从 GitHub 安装（推荐，无需 npm）
+
+```sh
+dsh plugin --profile web add github:3Tiga3/dsh-plugin-namecards
+```
+
+桌面版：插件页 → 添加插件 → 安装第三方插件 → 填 GitHub 地址。
+
+### 本地目录安装（开发）
+
+插件页 → 添加插件 → 安装第三方插件 → 填本仓库的绝对路径。
+
+### 从 npm 安装（尚未发布）
+
+npm 包名已预留为 `dsh-plugin-namecards`，发布后可用：
+
+```sh
+dsh plugin --profile web add dsh-plugin-namecards
+```
+
+安装后重启一次应用（宿主半边需要重启）；之后只改客户端/样式时刷新页面即可。
+
+## 兼容性与安全
+
+- 在 DSH **0.2.1-rc.2** 上测试通过（桌面端）；声明 `engines.dsh: >=0.2.0-rc.1`。
+- 宿主半边只包装 `pluginManager.listBundles()` 的返回值，用于替换展示字段；不修改任何插件文件、不写 cordis 配置。
+- 本地 HTTP 路由只接受回环地址请求；不联网、不上传任何数据。
+- 启用开关转调官方 `setBundleEnabled` / `setPluginEnabled`，部分改动需要重启后生效。
+
 ## 数据
 
 - `%USERPROFILE%\.dsh\dsh-plugin-namecards\cards.json`：名片、文件夹、收藏、顺序、视图
 - `%USERPROFILE%\.dsh\dsh-plugin-namecards\icons\`：上传的图标
 - **导入 / 导出**：导出 JSON 含图标（内置 id + 上传图 base64）、备注名、中文说明、文件夹名称与内容、排序；导入会连同图标一起恢复。
-
-## 安装 / 升级
-
-1. 插件页 → 添加插件 → 安装第三方插件 → 填 `D:\_Deepseek\dsh-plugin-namecards\pkg`；
-2. 宿主代码变更需重启应用；只改客户端/样式时刷新页面即可。
-3. 包名为 `dsh-plugin-namecards`，对外显示名为「插件名片」。
+- 从旧版（`dsh-plugin-cards` / `~/.dsh/plugin-cards`）升级时，数据会自动迁移并保留旧目录。
 
 ## 已知限制
 
 - 官方「已安装」页结构不可改，管理界面都在「插件管理」页；
 - 卡片说明只有一行；
+- 依赖宿主内部接口做展示替换，DSH 大版本升级后可能需要适配；
 - 只在本机可用（路由 loopback）。
 
 ## 自测
