@@ -46,8 +46,10 @@ function baseList() {
 function makeHarness(initialList) {
   const list = initialList || baseList()
   const calls = []
+  const removed = []
   const pm = {
     listBundles: async () => list,
+    removeBundle: async (bundleName) => { removed.push(bundleName); return { ok: true } },
     setBundleEnabled: async (bundleName, enabled) => { calls.push(['bundle', bundleName, enabled]); return {} },
     setPluginEnabled: async (id, enabled) => { calls.push(['row', id, enabled]); return {} }
   }
@@ -75,7 +77,7 @@ function makeHarness(initialList) {
     await done
     return { status: res.statusCode, data: JSON.parse(res.body) }
   }
-  return { pm, routes, route, call, calls }
+  return { pm, routes, route, call, calls, removed }
 }
 
 async function main() {
@@ -294,6 +296,16 @@ async function main() {
     await h.call('POST', '/dsh-plugin-namecards/save', { key: 'demo-bundle', card: { description: text } })
     const state = (await h.call('GET', '/dsh-plugin-namecards/state')).data
     assert.equal(state.cards['demo-bundle'].description, text)
+  })
+
+  await test('删除插件：仅允许移除非内置插件', async (home) => {
+    const list = baseList().concat([{ name: 'third-party-bundle', removable: true, enabled: true }])
+    const h = makeHarness(list)
+    const denied = await h.call('POST', '/dsh-plugin-namecards/remove', { name: 'demo-bundle' })
+    assert.equal(denied.status, 400)
+    const removed = await h.call('POST', '/dsh-plugin-namecards/remove', { name: 'third-party-bundle' })
+    assert.equal(removed.status, 200)
+    assert.deepEqual(h.removed, ['third-party-bundle'])
   })
 
   await test('保存 / 重置 / 上传 / 导入', async (home) => {

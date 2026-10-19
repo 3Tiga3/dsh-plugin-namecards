@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-namecards",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "插件名片：给插件换图标、中文名和说明，按文件夹/收藏整理，支持拖拽排序、列表/铺陈视图与启停开关；只改显示，不动插件本身。",
   "icon": "icon.svg",
   "type": "module",
