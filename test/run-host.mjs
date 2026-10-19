@@ -256,6 +256,46 @@ async function main() {
     assert.match(state.cards['demo-bundle'].icon, /^builtin:/)
   })
 
+  await test('预设：官方子代理插件自动收进「子代理插件」文件夹', async (home) => {
+    const list = baseList().concat([
+      { name: '@deepseek-ai/dsh-subagent-claude-code', enabled: false, meta: { title: { zh: 'Claude Code' } } },
+      { name: '@deepseek-ai/dsh-subagent-codex', enabled: false }
+    ])
+    const h = makeHarness(list)
+    const state = (await h.call('GET', '/dsh-plugin-namecards/state')).data
+    const folder = state.layout.folders.find((item) => item.name === '子代理插件')
+    assert.ok(folder, '应创建子代理插件文件夹')
+    assert.equal(state.layout.assignments['@deepseek-ai/dsh-subagent-codex'], folder.id)
+    assert.equal(state.layout.assignments['@deepseek-ai/dsh-subagent-claude-code'], folder.id)
+  })
+
+  await test('一键恢复预设：清空自定义内容并重新生成预设', async (home) => {
+    const list = baseList().concat([
+      { name: '@deepseek-ai/dsh-experimental-auto-review', enabled: false, meta: { title: { zh: '自动授权审查' } } },
+      { name: '@deepseek-ai/dsh-subagent-codex', enabled: false }
+    ])
+    const h = makeHarness(list)
+    await h.call('POST', '/dsh-plugin-namecards/save', { key: 'demo-bundle', card: { note: '自定义名字', description: '自定义说明' } })
+    await h.call('POST', '/dsh-plugin-namecards/upload', { key: 'demo-bundle', dataUrl: 'data:image/png;base64,iVBORw0KGgo=' })
+    const before = (await h.call('GET', '/dsh-plugin-namecards/state')).data
+    assert.equal(before.cards['demo-bundle'].note, '自定义名字')
+    const preset = await h.call('POST', '/dsh-plugin-namecards/preset', {})
+    assert.equal(preset.status, 200)
+    const after = (await h.call('GET', '/dsh-plugin-namecards/state')).data
+    assert.equal(after.cards['demo-bundle'], undefined, '作者自带图标的插件不应有预置名片')
+    assert.match(after.cards['other-bundle'].icon, /^builtin:/, '预设会重新分配默认图标')
+    assert.ok(after.layout.folders.some((folder) => folder.name === '实验性插件'))
+    assert.ok(after.layout.folders.some((folder) => folder.name === '子代理插件'))
+  })
+
+  await test('多行中文说明：保存时保留换行', async (home) => {
+    const h = makeHarness()
+    const text = '第一行说明\n第二行说明'
+    await h.call('POST', '/dsh-plugin-namecards/save', { key: 'demo-bundle', card: { description: text } })
+    const state = (await h.call('GET', '/dsh-plugin-namecards/state')).data
+    assert.equal(state.cards['demo-bundle'].description, text)
+  })
+
   await test('保存 / 重置 / 上传 / 导入', async (home) => {
     const h = makeHarness()
     const saved = await h.call('POST', '/dsh-plugin-namecards/save', { key: 'demo-bundle', card: { description: '保存后的说明', icon: 'builtin:tool' } })
